@@ -1,11 +1,15 @@
 package com.inditex.price.application.productprice.search;
 
 import com.inditex.price.application.ApplicationException;
-import com.inditex.price.application.productprice.dto.ProductPriceCriteriaDTO;
+import com.inditex.price.application.productprice.ApplicationNotFoundException;
 import com.inditex.price.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.domain.productprice.entity.Uuid;
 import com.inditex.price.domain.productprice.repository.QueryProductPriceRepository;
+import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
+@Service
 class SearchProductPriceImpl implements SearchProductPrice{
 
     private final QueryProductPriceRepository queryProductPriceRepository;
@@ -15,24 +19,23 @@ class SearchProductPriceImpl implements SearchProductPrice{
     }
 
     @Override
-    public ProductPriceDTO byCriteria(ProductPriceCriteriaDTO productPriceCriteriaDTO) {
-        validate(productPriceCriteriaDTO);
-        final var domainProductPrice = queryProductPriceRepository.byCriteria(
-                productPriceCriteriaDTO.getApplicationDate(),
-                new Uuid(productPriceCriteriaDTO.getProductId()),
-                new Uuid(productPriceCriteriaDTO.getBrandId())
-        );
-        return GetProductPriceDTO.FROM.domain(domainProductPrice);
+    public ProductPriceDTO search(LocalDateTime applicationDate, String productId, String brandId) {
+        validate(applicationDate, productId, brandId);
+
+        return queryProductPriceRepository
+                .search(applicationDate, new Uuid(productId), new Uuid(brandId))
+                .map(GetProductPriceDTO.FROM::domain)
+                .orElseThrow(() -> new ApplicationNotFoundException("No se ha encontrado precio para los parametros indicados"));
     }
 
-    private void validate(ProductPriceCriteriaDTO productPriceCriteriaDTO) {
-        if (productPriceCriteriaDTO.getProductId() == null || productPriceCriteriaDTO.getProductId().isBlank()) {
+    private void validate(LocalDateTime applicationDate, String productId, String brandId) {
+        if (productId == null || productId.isBlank()) {
             throw new ApplicationException("El id del producto es requerido");
         }
-        if (productPriceCriteriaDTO.getApplicationDate() == null) {
+        if (applicationDate == null) {
             throw new ApplicationException("El campo fecha de aplicacion es requerido");
         }
-        if (productPriceCriteriaDTO.getBrandId() == null || productPriceCriteriaDTO.getBrandId().isBlank()) {
+        if (brandId == null || brandId.isBlank()) {
             throw new ApplicationException("El id de la marca es requerido");
         }
     }

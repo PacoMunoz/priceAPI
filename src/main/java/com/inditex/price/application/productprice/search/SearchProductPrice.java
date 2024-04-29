@@ -1,8 +1,9 @@
 package com.inditex.price.application.productprice.search;
 
-import com.inditex.price.application.productprice.dto.ProductPriceCriteriaDTO;
 import com.inditex.price.application.productprice.dto.ProductPriceDTO;
 
+import java.time.LocalDateTime;
+
 public interface SearchProductPrice {
-    ProductPriceDTO byCriteria(ProductPriceCriteriaDTO productPriceCriteriaDTO);
+    ProductPriceDTO search(LocalDateTime applicationDate, String productId, String brandId);
 }

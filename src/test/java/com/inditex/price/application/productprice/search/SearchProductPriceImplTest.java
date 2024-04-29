@@ -1,7 +1,7 @@
 package com.inditex.price.application.productprice.search;
 
 import com.inditex.price.application.ApplicationException;
-import com.inditex.price.domain.productprice.entity.Uuid;
+import com.inditex.price.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.domain.productprice.repository.QueryProductPriceRepository;
 import com.inditex.price.utils.ProductPriceUtils;
 import org.assertj.core.api.Assertions;
@@ -11,6 +11,8 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class SearchProductPriceImplTest {
@@ -23,50 +25,43 @@ class SearchProductPriceImplTest {
 
     @Test
     void should_throwException_when_productIdIsNull() {
-        final var criteria = ProductPriceUtils.GET.getDefaultCriteria();
-        criteria.setProductId(null);
-
-        final var expectedThrow = Assertions.catchThrowable(() -> searchProductPrice.byCriteria(criteria));
+        final var expectedThrow = Assertions.catchThrowable(
+                () -> searchProductPrice.search(ProductPriceUtils.DEFAULT_APPLICATION_DATE,
+                        null, ProductPriceUtils.DEFAULT_BRAND_ID.value())
+        );
 
         Assertions.assertThat(expectedThrow).isInstanceOf(ApplicationException.class).hasMessage("El id del producto es requerido");
     }
 
     @Test
     void should_throwException_when_applicationDateNull() {
-        final var criteria = ProductPriceUtils.GET.getDefaultCriteria();
-        criteria.setApplicationDate(null);
-
-        final var expectedThrow = Assertions.catchThrowable(() -> searchProductPrice.byCriteria(criteria));
+        final var expectedThrow = Assertions.catchThrowable(
+                () -> searchProductPrice.search(null, ProductPriceUtils.DEFAULT_PRODUCT_ID.value(),
+                        ProductPriceUtils.DEFAULT_BRAND_ID.value()));
 
         Assertions.assertThat(expectedThrow).isInstanceOf(ApplicationException.class).hasMessage("El campo fecha de aplicacion es requerido");
     }
 
     @Test
     void should_throwException_when_brandIdIsNull() {
-        final var criteria = ProductPriceUtils.GET.getDefaultCriteria();
-        criteria.setBrandId(null);
-
-        final var expectedThrow = Assertions.catchThrowable(() -> searchProductPrice.byCriteria(criteria));
+        final var expectedThrow = Assertions.catchThrowable(
+                () -> searchProductPrice.search(ProductPriceUtils.DEFAULT_APPLICATION_DATE,
+                        ProductPriceUtils.DEFAULT_PRODUCT_ID.value(), null));
 
         Assertions.assertThat(expectedThrow).isInstanceOf(ApplicationException.class).hasMessage("El id de la marca es requerido");
     }
 
     @Test
     void should_beOk_when_searchProductPrice() {
-        final var criteria = ProductPriceUtils.GET.getDefaultCriteria();
         final var productPrice = ProductPriceUtils.GET.defaultDomain().build();
-        BDDMockito.given(queryProductPriceRepository.byCriteria(
-                criteria.getApplicationDate(),
-                new Uuid(criteria.getProductId()),
-                new Uuid(criteria.getBrandId()))
-        ).willReturn(productPrice);
+        final var applicationDate = ProductPriceUtils.DEFAULT_APPLICATION_DATE;
 
-        final var result = searchProductPrice.byCriteria(criteria);
+        BDDMockito.given(queryProductPriceRepository.search(applicationDate, productPrice.productId(), productPrice.brandId()))
+                .willReturn(Optional.of(productPrice));
 
-        Assertions.assertThat(result).isNotNull();
-        Assertions.assertThat(result.getStartDate()).isBeforeOrEqualTo(criteria.getApplicationDate());
-        Assertions.assertThat(result.getEndDate()).isAfterOrEqualTo(criteria.getApplicationDate());
-        Assertions.assertThat(result.getProductId()).isEqualTo(criteria.getProductId());
-        Assertions.assertThat(result.getBrandId()).isEqualTo(criteria.getBrandId());
+        final var result = searchProductPrice.search(applicationDate, productPrice.productId().value(), productPrice.brandId().value());
+
+        Assertions.assertThat(result).isNotNull().isInstanceOf(ProductPriceDTO.class);;
+        BDDMockito.verify(queryProductPriceRepository).search(applicationDate, productPrice.productId(), productPrice.brandId());
     }
 }
