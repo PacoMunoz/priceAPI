@@ -1,4 +1,4 @@
-package com.inditex.price.application.productprice;
+package com.inditex.price.application;
 
 import com.inditex.price.application.ApplicationException;
 

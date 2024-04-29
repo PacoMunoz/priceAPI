@@ -1,7 +1,7 @@
 package com.inditex.price.infrastructure;
 
 import com.inditex.price.application.ApplicationException;
-import com.inditex.price.application.productprice.ApplicationNotFoundException;
+import com.inditex.price.application.ApplicationNotFoundException;
 import com.inditex.price.domain.DomainException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
