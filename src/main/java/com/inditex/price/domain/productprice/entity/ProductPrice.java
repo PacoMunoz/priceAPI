@@ -2,7 +2,6 @@ package com.inditex.price.domain.productprice.entity;
 
 import com.inditex.price.domain.DomainException;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -14,7 +13,7 @@ public final class ProductPrice {
     private final LocalDateTime endDate;
     private final Integer priceList;
     private final Uuid productId;
-    private final BigDecimal price;
+    private final Price price;
     private final Currency currency;
 
     public static final class Builder {
@@ -24,7 +23,7 @@ public final class ProductPrice {
         private LocalDateTime endDate;
         private Integer priceList;
         private Uuid productId;
-        private BigDecimal price;
+        private Price price;
         private Currency currency;
 
         public Builder(ProductPrice price) {
@@ -67,7 +66,7 @@ public final class ProductPrice {
             return this;
         }
 
-        public Builder price(BigDecimal price) {
+        public Builder price(Price price) {
             this.price = price;
             return this;
         }
@@ -145,7 +144,7 @@ public final class ProductPrice {
         return this.productId;
     }
 
-    public BigDecimal price() {
+    public Price price() {
         return this.price;
     }
 
@@ -178,8 +177,8 @@ public final class ProductPrice {
                 ", endDate=" + endDate +
                 ", priceList=" + priceList +
                 ", productId=" + productId +
-                ", price=" + price +
-                ", currency=" + currency +
+                ", price=" + price.value() +
+                ", currency=" + currency.code() +
                 '}';
     }
 }

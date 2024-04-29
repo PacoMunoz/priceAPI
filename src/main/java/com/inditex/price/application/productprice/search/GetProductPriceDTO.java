@@ -9,6 +9,6 @@ enum GetProductPriceDTO {
 
     public ProductPriceDTO domain(ProductPrice productPrice) {
         return new ProductPriceDTO(productPrice.productId().value(), productPrice.brandId().value(),
-                productPrice.priceList(), productPrice.startDate(), productPrice.endDate(), productPrice.price());
+                productPrice.priceList(), productPrice.startDate(), productPrice.endDate(), productPrice.price().value());
     }
 }

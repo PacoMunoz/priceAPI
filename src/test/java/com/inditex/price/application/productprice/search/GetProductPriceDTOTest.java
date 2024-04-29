@@ -13,7 +13,7 @@ class GetProductPriceDTOTest {
         final var result = GetProductPriceDTO.FROM.domain(defaultDomain);
 
         Assertions.assertThat(result).isNotNull();
-        Assertions.assertThat(result.getPrice()).isEqualTo(ProductPriceUtils.DEFAULT_PRICE);
+        Assertions.assertThat(result.getPrice()).isEqualTo(ProductPriceUtils.DEFAULT_PRICE.value());
         Assertions.assertThat(result.getProductId()).isEqualTo(ProductPriceUtils.DEFAULT_PRODUCT_ID.value());
         Assertions.assertThat(result.getBrandId()).isEqualTo(ProductPriceUtils.DEFAULT_BRAND_ID.value());
         Assertions.assertThat(result.getEndDate()).isEqualTo(ProductPriceUtils.DEFAULT_END_DATE);

@@ -168,8 +168,8 @@ class ProductPriceTest {
                 .contains("startDate=".concat(productPrice.startDate().toString()))
                 .contains("endDate=".concat(productPrice.endDate().toString()))
                 .contains("productId=".concat(productPrice.productId().toString()))
-                .contains("price=".concat(productPrice.price().toString()))
-                .contains("currency=".concat(productPrice.currency().name()));
+                .contains("price=".concat(productPrice.price().value().toString()))
+                .contains("currency=".concat(String.valueOf(productPrice.currency().code())));
     }
 
 }

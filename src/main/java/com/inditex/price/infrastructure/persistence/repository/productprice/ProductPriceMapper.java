@@ -1,6 +1,7 @@
 package com.inditex.price.infrastructure.persistence.repository.productprice;
 
 import com.inditex.price.domain.productprice.entity.Currency;
+import com.inditex.price.domain.productprice.entity.Price;
 import com.inditex.price.domain.productprice.entity.ProductPrice;
 import com.inditex.price.domain.productprice.entity.Uuid;
 import com.inditex.price.infrastructure.persistence.model.productprice.ProductPricePO;
@@ -15,7 +16,7 @@ enum ProductPriceMapper {
         productPrice.priceList(productPricePO.getPriceList());
         productPrice.endDate(productPricePO.getEndDate());
         productPrice.startDate(productPricePO.getStartDate());
-        productPrice.price(productPricePO.getPrice());
+        productPrice.price(new Price(productPricePO.getPrice()));
         productPrice.currency(Currency.of(productPricePO.getCurrency()));
         return productPrice.build();
     }

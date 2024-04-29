@@ -2,6 +2,7 @@ package com.inditex.price.utils;
 
 import com.inditex.price.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.domain.productprice.entity.Currency;
+import com.inditex.price.domain.productprice.entity.Price;
 import com.inditex.price.domain.productprice.entity.ProductPrice;
 import com.inditex.price.domain.productprice.entity.Uuid;
 import com.inditex.price.infrastructure.persistence.model.productprice.ProductPricePO;
@@ -20,7 +21,7 @@ public enum ProductPriceUtils {
     public static final LocalDateTime DEFAULT_START_DATE = LocalDateTime.now().minusHours(1);
     public static final LocalDateTime DEFAULT_APPLICATION_DATE = LocalDateTime.now();
     public static final LocalDateTime DEFAULT_END_DATE = LocalDateTime.now().plusHours(1);
-    public static final BigDecimal DEFAULT_PRICE = new BigDecimal(12);
+    public static final Price DEFAULT_PRICE = new Price(new BigDecimal(12));
     public static final Integer DEFAULT_PRICE_LIST = 14;
     public static final Integer DEFAULT_PRIORITY = 1;
     public static final Currency DEFAULT_CURRENCY = Currency.EUR;
@@ -38,11 +39,11 @@ public enum ProductPriceUtils {
 
     public ProductPriceDTO getDefaultDTO() {
         return new ProductPriceDTO(DEFAULT_PRODUCT_ID.value(), DEFAULT_BRAND_ID.value(),
-                DEFAULT_PRICE_LIST, DEFAULT_START_DATE, DEFAULT_END_DATE, DEFAULT_PRICE);
+                DEFAULT_PRICE_LIST, DEFAULT_START_DATE, DEFAULT_END_DATE, DEFAULT_PRICE.value());
     }
 
     public ProductPricePO getDefaultPO() {
         return new ProductPricePO(DEFAULT_ID.value(), DEFAULT_BRAND_ID.value(), DEFAULT_START_DATE, DEFAULT_END_DATE, DEFAULT_PRICE_LIST
-                , DEFAULT_PRODUCT_ID.value(), DEFAULT_PRIORITY, DEFAULT_PRICE, DEFAULT_CURRENCY.code());
+                , DEFAULT_PRODUCT_ID.value(), DEFAULT_PRIORITY, DEFAULT_PRICE.value(), DEFAULT_CURRENCY.code());
     }
 }
