@@ -1,6 +1,6 @@
 # API REST de Búsqueda de Precios de Productos
 
-Este proyecto Java implementa una API REST para buscar precios de productos. La API expone un solo método de búsqueda accesible a través de la siguiente URL: `http://localhost:8080/v1/productprices/search`.
+Este proyecto Java implementa una API REST para buscar precios de productos. La API expone un solo método de búsqueda accesible a través de la siguiente URL: `http://localhost:8080/productprices/search`.
 
 ## Requisitos
 
