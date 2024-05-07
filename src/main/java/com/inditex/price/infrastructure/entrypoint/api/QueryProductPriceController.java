@@ -4,11 +4,11 @@ import com.inditex.application.productprice.dto.ProductPriceDTO;
 import com.inditex.infrastructure.entrypoint.api.productprice.GetProductPricesByCriteriaApi;
 import com.inditex.price.application.productprice.search.SearchProductPrice;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
-@Controller
+@RestController
 public class QueryProductPriceController implements GetProductPricesByCriteriaApi {
 
     private final SearchProductPrice searchProductPrice;
