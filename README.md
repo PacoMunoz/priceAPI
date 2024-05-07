@@ -62,4 +62,7 @@ GET /productprices/search
 GET /productprices/search?applicationDate=2024-05-07T12:00:00&productId=12345&brandId=6789
 ```
 
+#### Collección en Postman
 
+En la carpeta postman hay una collección postman
+con una serie de pruebas de integración.
