@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "ee5adedc-ad9e-4ef7-b1a2-70ce6f28fb30",
+		"name": "Inditex_entrance_examination OpenApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27743047"
+	},
+	"item": [
+		{
+			"name": "Test1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/productprices/search?applicationDate=2020-06-14T10:00:00&productId=2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5&brandId=45a9192c-c2b6-4429-b72e-786e45604469",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"productprices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-14T10:00:00"
+						},
+						{
+							"key": "productId",
+							"value": "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5"
+						},
+						{
+							"key": "brandId",
+							"value": "45a9192c-c2b6-4429-b72e-786e45604469"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/productprices/search?applicationDate=2020-06-14T16:00:00&productId=2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5&brandId=45a9192c-c2b6-4429-b72e-786e45604469",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"productprices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-14T16:00:00"
+						},
+						{
+							"key": "productId",
+							"value": "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5"
+						},
+						{
+							"key": "brandId",
+							"value": "45a9192c-c2b6-4429-b72e-786e45604469"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/productprices/search?applicationDate=2020-06-14T21:00:00&productId=2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5&brandId=45a9192c-c2b6-4429-b72e-786e45604469",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"productprices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-14T21:00:00"
+						},
+						{
+							"key": "productId",
+							"value": "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5"
+						},
+						{
+							"key": "brandId",
+							"value": "45a9192c-c2b6-4429-b72e-786e45604469"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/productprices/search?applicationDate=2020-06-15T10:00:00&productId=2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5&brandId=45a9192c-c2b6-4429-b72e-786e45604469",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"productprices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-15T10:00:00"
+						},
+						{
+							"key": "productId",
+							"value": "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5"
+						},
+						{
+							"key": "brandId",
+							"value": "45a9192c-c2b6-4429-b72e-786e45604469"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/productprices/search?applicationDate=2020-06-16T21:00:00&productId=2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5&brandId=45a9192c-c2b6-4429-b72e-786e45604469",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"productprices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-16T21:00:00"
+						},
+						{
+							"key": "productId",
+							"value": "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5"
+						},
+						{
+							"key": "brandId",
+							"value": "45a9192c-c2b6-4429-b72e-786e45604469"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DomainError",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
