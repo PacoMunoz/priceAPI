@@ -1,6 +1,6 @@
 package com.inditex.price.application.productprice.search;
 
-import io.reflectoring.model.ProductPriceDTO;
+import com.inditex.application.productprice.dto.ProductPriceDTO;
 
 import java.time.LocalDateTime;
 

@@ -1,8 +1,8 @@
 package com.inditex.price.infrastructure.entrypoint.api;
 
+import com.inditex.application.productprice.dto.ProductPriceDTO;
+import com.inditex.infrastructure.entrypoint.api.productprice.GetProductPricesByCriteriaApi;
 import com.inditex.price.application.productprice.search.SearchProductPrice;
-import io.reflectoring.api.GetProductPricesByCriteriaApi;
-import io.reflectoring.model.ProductPriceDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 

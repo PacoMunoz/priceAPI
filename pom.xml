@@ -97,8 +97,8 @@
 							</inputSpec>
 							<generateSupportingFiles>true</generateSupportingFiles>
 							<generatorName>spring</generatorName>
-							<apiPackage>io.reflectoring.api</apiPackage>
-							<modelPackage>io.reflectoring.model</modelPackage>
+							<apiPackage>com.inditex.infrastructure.entrypoint.api.productprice</apiPackage>
+							<modelPackage>com.inditex.application.productprice.dto</modelPackage>
 							<supportingFilesToGenerate>
 								ApiUtil.java
 							</supportingFilesToGenerate>
@@ -114,9 +114,6 @@
 								<hideGenerationTimestamp>true</hideGenerationTimestamp>
 								<bigDecimalAsString>true</bigDecimalAsString>
 								<useBeanValidation>true</useBeanValidation>
-								<!--<useSpringBoot3>true</useSpringBoot3>
-								<dateLibrary>java8</dateLibrary>
-								<java8>true</java8>-->
 							</configOptions>
 							<typeMappings>
 								<typeMapping>OffsetDateTime=java.time.LocalDateTime</typeMapping>

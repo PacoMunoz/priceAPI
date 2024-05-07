@@ -1,11 +1,11 @@
 package com.inditex.price.utils;
 
+import com.inditex.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.domain.productprice.entity.Currency;
 import com.inditex.price.domain.productprice.entity.Price;
 import com.inditex.price.domain.productprice.entity.ProductPrice;
 import com.inditex.price.domain.productprice.entity.Uuid;
 import com.inditex.price.infrastructure.persistence.model.productprice.ProductPricePO;
-import io.reflectoring.model.ProductPriceDTO;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

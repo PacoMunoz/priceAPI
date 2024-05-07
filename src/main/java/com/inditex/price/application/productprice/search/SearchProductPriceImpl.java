@@ -1,10 +1,10 @@
 package com.inditex.price.application.productprice.search;
 
+import com.inditex.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.application.ApplicationException;
 import com.inditex.price.application.ApplicationNotFoundException;
 import com.inditex.price.domain.productprice.entity.Uuid;
 import com.inditex.price.domain.productprice.repository.QueryProductPriceRepository;
-import io.reflectoring.model.ProductPriceDTO;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

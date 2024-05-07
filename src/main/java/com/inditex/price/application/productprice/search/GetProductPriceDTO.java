@@ -1,7 +1,7 @@
 package com.inditex.price.application.productprice.search;
 
+import com.inditex.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.domain.productprice.entity.ProductPrice;
-import io.reflectoring.model.ProductPriceDTO;
 
 enum GetProductPriceDTO {
 
