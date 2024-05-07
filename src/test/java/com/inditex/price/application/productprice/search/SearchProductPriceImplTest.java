@@ -1,9 +1,9 @@
 package com.inditex.price.application.productprice.search;
 
 import com.inditex.price.application.ApplicationException;
-import com.inditex.price.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.domain.productprice.repository.QueryProductPriceRepository;
 import com.inditex.price.utils.ProductPriceUtils;
+import io.reflectoring.model.ProductPriceDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

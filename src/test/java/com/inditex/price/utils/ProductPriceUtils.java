@@ -1,11 +1,11 @@
 package com.inditex.price.utils;
 
-import com.inditex.price.application.productprice.dto.ProductPriceDTO;
 import com.inditex.price.domain.productprice.entity.Currency;
 import com.inditex.price.domain.productprice.entity.Price;
 import com.inditex.price.domain.productprice.entity.ProductPrice;
 import com.inditex.price.domain.productprice.entity.Uuid;
 import com.inditex.price.infrastructure.persistence.model.productprice.ProductPricePO;
+import io.reflectoring.model.ProductPriceDTO;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -38,8 +38,15 @@ public enum ProductPriceUtils {
     }
 
     public ProductPriceDTO getDefaultDTO() {
-        return new ProductPriceDTO(DEFAULT_PRODUCT_ID.value(), DEFAULT_BRAND_ID.value(),
-                DEFAULT_PRICE_LIST, DEFAULT_START_DATE, DEFAULT_END_DATE, DEFAULT_PRICE.value());
+        final var productPriceDTO = new ProductPriceDTO();
+        productPriceDTO.setProductId(DEFAULT_PRODUCT_ID.value());
+        productPriceDTO.setBrandId(DEFAULT_BRAND_ID.value());
+        productPriceDTO.setPriceList(DEFAULT_PRICE_LIST);
+        productPriceDTO.setStartDate(DEFAULT_START_DATE);
+        productPriceDTO.setEndDate(DEFAULT_END_DATE);
+        productPriceDTO.setPrice(DEFAULT_PRICE.value());
+
+        return productPriceDTO;
     }
 
     public ProductPricePO getDefaultPO() {

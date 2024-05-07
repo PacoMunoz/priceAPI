@@ -1,4 +1,4 @@
-package com.inditex.price.infrastructure;
+package com.inditex.price.infrastructure.config;
 
 import com.inditex.price.application.ApplicationException;
 import com.inditex.price.application.ApplicationNotFoundException;
