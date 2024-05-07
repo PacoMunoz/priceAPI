@@ -66,3 +66,7 @@ GET /productprices/search?applicationDate=2024-05-07T12:00:00&productId=12345&br
 
 En la carpeta postman hay una collección postman
 con una serie de pruebas de integración.
+
+#### Swagger
+
+Puedes acceder a swagger desde http://localhost:8080/swagger-ui/index.html
