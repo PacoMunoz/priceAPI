@@ -8,17 +8,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @SpringBootTest
 class ProductPriceDAOTest {
+
+    private final LocalDateTime date = LocalDateTime.of(2020, 7, 14, 3, 2, 1 );
 
     @Autowired
     private ProductPriceDAO productPriceDAO;
 
     @Test
     void should_returnData_when_search() {
-        final var date = LocalDateTime.of(2020, 7, 14, 3, 2, 1 );
-
         final var result = productPriceDAO.search(date, "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5", "45a9192c-c2b6-4429-b72e-786e45604469");
 
         final var startDate = LocalDateTime.of(2020, 6, 15, 16, 0, 0);
@@ -30,8 +31,22 @@ class ProductPriceDAOTest {
     }
 
     @Test
-    void should_returnEmpty_when_search() {
+    void should_returnEmpty_when_DateDoesNotExist() {
         final var result = productPriceDAO.search(LocalDateTime.now(), "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5", "45a9192c-c2b6-4429-b72e-786e45604469");
+
+        Assertions.assertThat(result).isEmpty();
+    }
+
+    @Test
+    void should_ThrowError_when_ProductIdDoesNotExists() {
+        final var result = productPriceDAO.search(date, UUID.randomUUID().toString(), "45a9192c-c2b6-4429-b72e-786e45604469");
+
+        Assertions.assertThat(result).isEmpty();
+    }
+
+    @Test
+    void should_ThrowError_when_BrandIdDoesNotExists() {
+        final var result = productPriceDAO.search(date, "2f67a7df-47d6-4e39-8f69-bc2ef1b47ee5", UUID.randomUUID().toString());
 
         Assertions.assertThat(result).isEmpty();
     }

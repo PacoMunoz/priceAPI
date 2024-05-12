@@ -1,6 +1,4 @@
-package com.inditex.price.application;
-
-import com.inditex.price.application.ApplicationException;
+package com.inditex.price.domain;
 
 public class ApplicationNotFoundException extends ApplicationException {
     public ApplicationNotFoundException(String key) {

@@ -7,6 +7,7 @@ import com.inditex.price.domain.productprice.entity.Uuid;
 import com.inditex.price.infrastructure.persistence.model.productprice.ProductPricePO;
 
 enum ProductPriceMapper {
+
     TO;
 
     public ProductPrice domain(ProductPricePO productPricePO) {

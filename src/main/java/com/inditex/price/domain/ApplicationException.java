@@ -1,4 +1,4 @@
-package com.inditex.price.application;
+package com.inditex.price.domain;
 
 import java.io.Serial;
 

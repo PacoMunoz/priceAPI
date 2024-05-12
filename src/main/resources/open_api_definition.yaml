@@ -31,18 +31,21 @@ paths:
           schema:
             type: string
             format: date-time
+            pattern: '^(?!\s*$).+'
         - in: query
           name: productId
           description: product id
           required: true
           schema:
             type: string
+            pattern: '^(?!\s*$).+'
         - in: query
           name: brandId
           description: brand id
           required: true
           schema:
             type: string
+            pattern: '^(?!\s*$).+'
       responses:
         '200':
           description: Successful operation

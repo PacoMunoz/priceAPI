@@ -1,6 +1,8 @@
 package com.inditex.price.infrastructure.entrypoint.api;
 
+import com.inditex.price.domain.ApplicationNotFoundException;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.UUID;
 
 @SpringBootTest
 class QueryProductPriceControllerTest {
@@ -31,6 +32,42 @@ class QueryProductPriceControllerTest {
 
         Assertions.assertThat(result).isNotNull();
         Assertions.assertThat(Objects.requireNonNull(result.getBody()).getPrice()).isEqualTo(expected);
+    }
+
+    @Test
+    void should_throwError_when_productIdDoesNotExist() {
+        final var date = LocalDateTime.of(2020, 6, 14, 10, 0, 0);
+
+        final var expectedThrow = Assertions.catchThrowable(
+                () -> queryProductPriceController.getProductPricesByCriteria(date, UUID.randomUUID().toString(), BRAND_ID)
+        );
+
+        Assertions.assertThat(expectedThrow).isInstanceOf(ApplicationNotFoundException.class)
+                .hasMessage("No se ha encontrado precio para los parametros indicados");
+    }
+
+    @Test
+    void should_ThrowError_when_brandIdDoesNotExist() {
+        final var date = LocalDateTime.of(2020, 6, 14, 10, 0, 0);
+
+        final var expectedThrow = Assertions.catchThrowable(
+                () -> queryProductPriceController.getProductPricesByCriteria(date, PRODUCT_ID, UUID.randomUUID().toString())
+        );
+
+        Assertions.assertThat(expectedThrow).isInstanceOf(ApplicationNotFoundException.class)
+                .hasMessage("No se ha encontrado precio para los parametros indicados");
+    }
+
+    @Test
+    void should_ThrowError_when_DateDoesNotExist() {
+        final var date = LocalDateTime.of(2025, 6, 14, 10, 0, 0);
+
+        final var expectedThrow = Assertions.catchThrowable(
+                () -> queryProductPriceController.getProductPricesByCriteria(date, PRODUCT_ID, BRAND_ID)
+        );
+
+        Assertions.assertThat(expectedThrow).isInstanceOf(ApplicationNotFoundException.class)
+                .hasMessage("No se ha encontrado precio para los parametros indicados");
     }
 
 }

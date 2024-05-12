@@ -1,7 +1,6 @@
 package com.inditex.price.infrastructure.config;
 
-import com.inditex.price.application.ApplicationException;
-import com.inditex.price.application.ApplicationNotFoundException;
+import com.inditex.price.domain.ApplicationNotFoundException;
 import com.inditex.price.domain.DomainException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class SpringHandlerErrors extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
-    @ExceptionHandler(value = {DomainException.class, ApplicationException.class})
+    @ExceptionHandler(value = {DomainException.class})
     protected ResponseEntity<Object> handleDomainAccessError(RuntimeException ex, WebRequest request) {
         var message = ex.getMessage();
         log.error(message, ex);
