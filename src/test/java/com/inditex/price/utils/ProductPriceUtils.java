@@ -50,7 +50,18 @@ public enum ProductPriceUtils {
     }
 
     public ProductPricePO getDefaultPO() {
-        return new ProductPricePO(DEFAULT_ID.value(), DEFAULT_BRAND_ID.value(), DEFAULT_START_DATE, DEFAULT_END_DATE, DEFAULT_PRICE_LIST
-                , DEFAULT_PRODUCT_ID.value(), DEFAULT_PRIORITY, DEFAULT_PRICE.value(), DEFAULT_CURRENCY.code());
+        final var productPricePO = new ProductPricePO();
+
+        productPricePO.setId(DEFAULT_ID.value());
+        productPricePO.setBrandId(DEFAULT_BRAND_ID.value());
+        productPricePO.setStartDate(DEFAULT_START_DATE);
+        productPricePO.setEndDate(DEFAULT_END_DATE);
+        productPricePO.setPriceList(DEFAULT_PRICE_LIST);
+        productPricePO.setProductId(DEFAULT_PRODUCT_ID.value());
+        productPricePO.setPriority(DEFAULT_PRIORITY);
+        productPricePO.setPrice(DEFAULT_PRICE.value());
+        productPricePO.setCurrency(DEFAULT_CURRENCY.code());
+
+        return productPricePO;
     }
 }

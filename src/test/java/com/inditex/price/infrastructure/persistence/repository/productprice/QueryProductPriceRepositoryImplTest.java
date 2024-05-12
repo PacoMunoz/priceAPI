@@ -1,6 +1,5 @@
 package com.inditex.price.infrastructure.persistence.repository.productprice;
 
-import com.inditex.price.infrastructure.persistence.dao.productprice.ProductPriceDAO;
 import com.inditex.price.utils.ProductPriceUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,7 @@ class QueryProductPriceRepositoryImplTest {
     private QueryProductPriceRepositoryImpl queryProductPriceRepository;
 
     @Mock
-    private ProductPriceDAO productPriceDAO;
+    private JpaProductPriceRepository jpaProductPriceRepository;
 
     @Test
     void should_beOk_when_searchProductPrice() {
@@ -28,13 +27,13 @@ class QueryProductPriceRepositoryImplTest {
         final var brandId = ProductPriceUtils.DEFAULT_BRAND_ID;
         final var productPricePO = ProductPriceUtils.GET.getDefaultPO();
 
-        BDDMockito.given(productPriceDAO.search(applicationDate, productId.value(), brandId.value()))
+        BDDMockito.given(jpaProductPriceRepository.search(applicationDate, productId.value(), brandId.value()))
                 .willReturn(Optional.of(productPricePO));
 
         final var result = queryProductPriceRepository.search(applicationDate, productId, brandId);
 
         Assertions.assertThat(result).isNotNull();
-        BDDMockito.verify(productPriceDAO).search(applicationDate, productId.value(), brandId.value());
+        BDDMockito.verify(jpaProductPriceRepository).search(applicationDate, productId.value(), brandId.value());
     }
 
 }
